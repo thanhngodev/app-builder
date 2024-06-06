@@ -25,3 +25,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Figma Link
+Figma Link [Design UI/UX](https://www.figma.com/design/fhGHMH8paeuD5bkasQQzPS/Deep-dive-files?node-id=2-13&t=8ReqtsonOUrDzzn4-0)

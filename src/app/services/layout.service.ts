@@ -12,7 +12,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class LayoutService {
-  public options: GridConfig = GRID_CONFIG_OPTIONS;
+  public options: GridConfig = {
+    ...GRID_CONFIG_OPTIONS,
+    emptyCellDropCallback: this.emptyCellDrop.bind(this), // Bind the callback method
+  };;
   public components: IComponent[] = [];
   private dataBuilderLayout$!: BehaviorSubject<IDataBuilder>;
   dropId: string = '';
@@ -54,13 +57,14 @@ export class LayoutService {
     this.dataBuilderLayout$.next(currentLayout);
   }
 
-  addItem(): void {
+
+  addItem(cols: number, rows: number, x: number, y: number): void {
     const newItem: GridItem = {
-      cols: 6,
+      cols,
       id: UUID.UUID(),
-      rows: 1,
-      x: 0,
-      y: 0,
+      rows,
+      x,
+      y,
       maxItemCols: 12,
     };
     const currentLayout = this.dataBuilderLayout$.getValue();
@@ -121,6 +125,16 @@ export class LayoutService {
     });
   }
 
+  emptyCellDrop(event: DragEvent, item: GridItem): void {
+    console.log("service: ", event);
+    console.log("item: ", item);
+    
+    
+    const cols = 1;
+    const rows = 1;
+    this.addItem(cols, rows, item.x, item.y);
+  }
+ 
   getComponentRef(id: string): string {
     const component = this.components.find(
       (component: IComponent) => component.id === id

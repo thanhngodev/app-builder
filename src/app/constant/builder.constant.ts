@@ -1,5 +1,4 @@
 import { GridsterConfig as GridConfig } from 'angular-gridster2';
-import { ICON_MENU } from './icon.constant';
 
 export const DRAG_HANDLE_CLASS = 'drag-handler-layout';
 
@@ -13,13 +12,19 @@ export const GRID_CONFIG_OPTIONS: GridConfig = {
   resizable: {
     enabled: true,
   },
-  displayGrid: 'none',
+  displayGrid: "onDrag&Resize",
   swapWhileDragging: true,
-  swap: false,
+  swap: true,
+  minCols: 12,
+  maxCols: 12,
+  minRows: 5,
+
+  disableScrollVertical: false,
+  disableScrollHorizontal: false,
 
   // EmptyCell
   enableEmptyCellClick: false,
-  enableEmptyCellContextMenu: false,
+  enableEmptyCellContextMenu: true,
   enableEmptyCellDrop: true,
   enableEmptyCellDrag: true,
   enableOccupiedCellDrop: false,

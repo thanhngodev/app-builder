@@ -22,8 +22,19 @@ $heightGridContent: 844px;
   width: 100%;
 
   &-field {
-    height: calc(100vh - $heightBuilder);
+    height: calc(100% - $heightBuilder);
     margin: 0;
+
+    &.sticky-fixed {
+      position: -webkit-sticky;
+      position: sticky;
+      background: rgba(242, 242, 242, 1);
+      top: 0;
+      z-index: 10;
+      //   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.25);
+      //   -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.25);
+      //   -moz-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.25);
+    }
 
     h1 {
       margin: 0;
@@ -33,7 +44,7 @@ $heightGridContent: 844px;
   &-builder {
     display: flex;
     width: 100%;
-    height: $heightBuilder;
+    min-height: $heightBuilder;
   }
 
   &-sidebar {
@@ -46,7 +57,8 @@ $heightGridContent: 844px;
   &-preview {
     max-width: calc(100% - $sidebarWidth);
     width: calc(100% - $sidebarWidth);
-    max-height: $heightBuilder;
+    height: fit-content;
+    min-height: $heightBuilder;
     background: rgba(255, 255, 255, 1);
     padding: 8px;
     padding-top: 0;
@@ -85,7 +97,7 @@ $heightGridContent: 844px;
 
     gridster {
       display: flex;
-      max-height: $heightGridContent;
+      min-height: $heightGridContent;
       flex-direction: column;
       background: rgba(255, 255, 255, 1);
       border: 1px dashed rgba(200, 200, 200, 1);
@@ -93,21 +105,25 @@ $heightGridContent: 844px;
       padding: 12px !important;
       margin-bottom: 12px;
       transition: all linear 0.23s;
+      -moz-transition: all linear 0.23s; /* Firefox 4 */
+      -webkit-transition: all linear 0.23s; /* Safari and Chrome */
+      -o-transition: all linear 0.23s; /* Opera */
+      -ms-transition: all linear 0.23s; /* Explorer 10 */
 
       &.footer-active {
-        max-height: calc(
+        min-height: calc(
           $heightGridContent - ($heightBoxCheck + $spaceBotBoxCheck)
         );
       }
 
       &.header-active {
-        max-height: calc(
+        min-height: calc(
           $heightGridContent - ($heightBoxCheck + $spaceBotBoxCheck)
         );
       }
 
       &.footer-active.header-active {
-        max-height: calc(
+        min-height: calc(
           $heightGridContent - ($heightBoxCheck + $spaceBotBoxCheck) * 2
         );
       }
@@ -123,6 +139,16 @@ $heightGridContent: 844px;
         line-height: 16.94px;
         text-align: left;
         color: rgba(0, 0, 0, 1);
+      }
+
+      .gridster-column {
+        border-left: 1px solid rgba(242, 242, 242, 1);
+        border-right: 1px solid rgba(242, 242, 242, 1);
+      }
+
+      .gridster-row {
+        border-top: 1px solid rgba(242, 242, 242, 1);
+        border-bottom: 1px solid rgba(242, 242, 242, 1);
       }
     }
 

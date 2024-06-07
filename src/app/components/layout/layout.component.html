@@ -7,12 +7,12 @@
   <ng-container *ngFor="let item of layout">
     <gridster-item [item]="item" (dragover)="setDropId(item['id'])">
       <builder-grid-content>
-        <button (click)="deleteItem(item)">Delete Item</button><br />
+        <button (click)="deleteItem(item)">Delete</button><br />
         <span>x: {{ item.x + 1 }}</span
         >{{ ", " }}<span>y: {{ item.y + 1 }}</span
         ><br />
-        <span>col: {{ item.cols }}</span
-        >{{ ", " }}<span>row: {{ item.rows }}</span
+        <span>c: {{ item.cols }}</span
+        >{{ ", " }}<span>r: {{ item.rows }}</span
         ><br />
         <ng-container
           appLayoutItem

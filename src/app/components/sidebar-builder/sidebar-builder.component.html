@@ -8,7 +8,7 @@
         <div class="sidebar-section-item sidebar-nav-list">
           <ng-container *ngFor="let menu of menus; let i = index">
             <ng-container *ngIf="menu">
-              <div class="sidebar-nav-item" draggable="true" (dragstart)="dragStartHandler($event)">
+              <div class="sidebar-nav-item" draggable="true" (dragstart)="dragStartHandler($event, menu.code)">
                 <div class="sidebar-nav-item-content">
                   <svg [outerHTML]="menu.icon | svgIcon : configIcon"></svg>
                   <span *ngIf="menu.label" class="sidebar-nav-item-label">
@@ -25,16 +25,6 @@
           </ng-container>
         </div>
       </ng-container>
-    </div>
-    <hr />
-    <div class="toolbar">
-      <button (click)="addItem()">Add Item</button>
-      <div class="draggable" draggable="true" (dragend)="dropItem('example1')">
-        Example 1
-      </div>
-      <div class="draggable" draggable="true" (dragend)="dropItem('example2')">
-        Example 2
-      </div>
     </div>
   </section>
 </nav>

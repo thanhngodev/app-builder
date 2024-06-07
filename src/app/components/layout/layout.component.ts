@@ -37,13 +37,13 @@ export class LayoutComponent implements OnInit {
     this.layoutService.deleteItem(item['id']);
   }
 
-  addItem() {
-    this.layoutService.addItem();
-  }
+  // addItem() {
+  //   this.layoutService.addItem();
+  // }
 
-  dropItem(item: string) {
-    this.layoutService.dropItem(item);
-  }
+  // dropItem(item: string) {
+  //   this.layoutService.dropItem(item);
+  // }
 
   setDropId(id: string) {
     this.layoutService.setDropId(id);

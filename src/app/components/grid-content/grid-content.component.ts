@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DRAG_HANDLE_CLASS } from '../../constant/constant';
+import { DRAG_HANDLE_CLASS } from '../../constant/builder.constant';
 
 @Component({
-  selector: 'app-grid-content',
+  selector: 'builder-grid-content',
   templateUrl: './grid-content.component.html'
 })
 export class GridContentComponent implements OnInit {

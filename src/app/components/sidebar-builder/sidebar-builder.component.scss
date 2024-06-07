@@ -1,0 +1,59 @@
+.sidebar {
+  &-builder {
+    width: 100%;
+    padding: 8px 4px;
+  }
+
+  &-section {
+    &-header {
+      span {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 16.94px;
+        text-align: left;
+        color: rgba(0, 0, 0, 1);
+      }
+    }
+  }
+
+  &-nav {
+    &-item {
+      padding: 8px 4px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all linear 0.23s;
+      cursor: pointer;
+
+      &-icon {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-right: 8px;
+      }
+
+      &-content {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        span {
+          margin-left: 8px;
+        }
+      }
+
+      &:first-child {
+        margin-top: 12px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        background-color: #fff;
+      }
+    }
+  }
+}

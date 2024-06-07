@@ -28,3 +28,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Figma Link
 Figma Link [Design UI/UX](https://www.figma.com/design/fhGHMH8paeuD5bkasQQzPS/Deep-dive-files?node-id=2-13&t=8ReqtsonOUrDzzn4-0)
+
+
+
+
+
+## use builder app-layout-builder
+
+<app-layout-builder>
+  <ng-container field >this content field</ng-container>
+</app-layout-builder>

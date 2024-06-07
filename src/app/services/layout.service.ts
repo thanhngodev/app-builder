@@ -3,20 +3,56 @@ import {
   GridsterConfig as GridConfig,
   GridsterItem as GridItem,
 } from 'angular-gridster2';
-import { GRID_CONFIG_OPTIONS } from '../constant/constant';
-import { IComponent } from '../interfaces/layout.interface';
+import { GRID_CONFIG_OPTIONS } from '../constant/builder.constant';
+import { IComponent, IDataBuilder } from '../interfaces/layout.interface';
 import { UUID } from 'angular2-uuid';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LayoutService {
   public options: GridConfig = GRID_CONFIG_OPTIONS;
-  public layout: GridItem[] = [];
   public components: IComponent[] = [];
+  private dataBuilderLayout$!: BehaviorSubject<IDataBuilder>;
   dropId: string = '';
 
-  constructor() {}
+  constructor() {
+    const initialDataBuilderLayout: IDataBuilder = {
+      isShowFooter: true,
+      isShowHeader: true,
+      dataBuilder: [],
+    };
+    this.dataBuilderLayout$ = new BehaviorSubject<IDataBuilder>(initialDataBuilderLayout);
+  }
+
+  get dataBuilderLayout() {
+    return this.dataBuilderLayout$.value;
+  }
+
+  get dataBuilder() {
+    return this.dataBuilderLayout$.value['dataBuilder'];
+  }
+
+  get isShowFooter() {
+    return this.dataBuilderLayout$.value['isShowFooter'];
+  }
+
+  get isShowHeader() {
+    return this.dataBuilderLayout$.value['isShowHeader'];
+  }
+
+  setShowHeader(value: boolean): void {
+    const currentLayout = this.dataBuilderLayout$.getValue();
+    currentLayout.isShowHeader = value;
+    this.dataBuilderLayout$.next(currentLayout);
+  }
+
+  setShowFooter(value: boolean): void {
+    const currentLayout = this.dataBuilderLayout$.getValue();
+    currentLayout.isShowFooter = value;
+    this.dataBuilderLayout$.next(currentLayout);
+  }
 
   addItem(): void {
     const newItem: GridItem = {
@@ -25,9 +61,11 @@ export class LayoutService {
       rows: 1,
       x: 0,
       y: 0,
-      maxItemCols: 12
+      maxItemCols: 12,
     };
-    this.layout.push(newItem);
+    const currentLayout = this.dataBuilderLayout$.getValue();
+    currentLayout.dataBuilder.push(newItem);
+    this.dataBuilderLayout$.next(currentLayout);
   }
 
   deleteItem(id: string): void {
@@ -36,13 +74,15 @@ export class LayoutService {
   }
 
   private removeItemFromLayout(id: string): void {
-    if (this.layout && this.layout.length > 0) {
-      const itemIndex = this.layout.findIndex(
+    if (this.dataBuilder && this.dataBuilder.length > 0) {
+      const currentLayout = this.dataBuilderLayout$.getValue();
+      const itemIndex = currentLayout.dataBuilder.findIndex(
         (gridItem: GridItem) => gridItem['id'] === id
       );
-
+  
       if (itemIndex !== -1) {
-        this.layout.splice(itemIndex, 1);
+        currentLayout.dataBuilder.splice(itemIndex, 1);
+        this.dataBuilderLayout$.next(currentLayout);
       }
     }
   }

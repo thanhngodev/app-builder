@@ -1,28 +1,33 @@
-<div class="builder-layout2ntt5 layout2ntt5">
-  <div class="layout2ntt5-field">
-    <h1>
-      Create a Layout
-    </h1>
+<div class="builder-layout24ntt layout24ntt">
+  <div class="layout24ntt-field">
+    <ng-content select="[field]"></ng-content>
+    <h1>Create a Layout</h1>
     <div>
-      <div>
-        <div>
-          <label>Name</label>
-          <input placeholder="Enter name"  />
-        </div>
-        <div>
-          <label>Code</label>
-          <input placeholder="Enter code"  />
-        </div>
-      </div>
-      <div>
-        <div>
-          <!-- <clr-toggle-wrapper>
-            <input type="checkbox" clrToggle value="option1" name="options" />
-            <label>Option 1</label>
-          </clr-toggle-wrapper> -->
-        </div>
-      </div>
+      <button (click)="toggleHeaderVisibility()" style="margin-right: 12px;">Show Header</button>
+      <span style="margin-right: 40px;">Value show Header: {{isShowHeader}}</span>|
+      <button (click)="toggleFooterVisibility()"  style="margin-right: 12px;">Show Footer</button>
+      <span style="margin-right: 40px;">Value show Footer: {{isShowFooter}}</span>
+      <br /><br />
+      <button (click)="submit()" >Submit</button>
     </div>
   </div>
-  <div class="layout2ntt5-builder">sssss</div>
+  <div class="layout24ntt-builder">
+    <div class="layout24ntt-builder-sidebar layout24ntt-sidebar">
+      <builder-sidebar-builder></builder-sidebar-builder>
+    </div>
+    <div class="layout24ntt-builder-content layout24ntt-preview">
+      <div class="layout24ntt-preview-title">Preview</div>
+      <ng-container *ngIf="isShowHeader" >
+        <div class="box-check">
+          <span class="box-check-text"> HEADER </span>
+        </div>
+      </ng-container>
+      <builder-layout></builder-layout>
+      <ng-container *ngIf="isShowFooter" >
+        <div class="box-check">
+          <span class="box-check-text"> FOOTER </span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
 </div>

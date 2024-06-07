@@ -1,17 +1,29 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import {  GridsterConfig as GridConfig, GridsterItem as GridItem } from 'angular-gridster2';
+import { Component, OnInit } from '@angular/core';
 import { LayoutService } from '../../services/layout.service';
+import {
+  GridsterConfig as GridConfig,
+  GridsterItem as GridItem,
+} from 'angular-gridster2';
 import { IComponent } from '../../interfaces/layout.interface';
+import { MENUS } from '../../constant/builder.constant';
 
 @Component({
-  selector: 'builder-layout',
-  templateUrl: './layout.component.html'
+  selector: 'builder-sidebar-builder',
+  templateUrl: './sidebar-builder.component.html',
+  styleUrls: ['./sidebar-builder.component.scss']
 })
-export class LayoutComponent implements OnInit {
+export class SidebarBuilderComponent implements OnInit {
+  menus = MENUS;
+  configIcon = {
+    class: 'icon-menu-builder',
+    style: { width: '24px', height: '24px' },
+  };
 
   constructor(private layoutService: LayoutService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.menus);
+  }
 
   get options(): GridConfig {
     return this.layoutService.options;
@@ -21,14 +33,6 @@ export class LayoutComponent implements OnInit {
     return this.layoutService.dataBuilder;
   }
 
-  get isShowFooter() {
-    return this.layoutService?.isShowFooter;
-  }
-
-  get isShowHeader() {
-    return this.layoutService?.isShowHeader;
-  }
-  
   get components(): IComponent[] {
     return this.layoutService.components;
   }
@@ -51,5 +55,13 @@ export class LayoutComponent implements OnInit {
 
   getComponentRef(id: string) {
     return this.layoutService.getComponentRef(id);
+  }
+
+  dragStartHandler($e: DragEvent) {
+    console.log($e);
+    if ($e.dataTransfer) {
+      $e.dataTransfer.setData('text/plain', 'Drag Me Button');
+      $e.dataTransfer.dropEffect = 'copy';
+    }
   }
 }

@@ -131,7 +131,7 @@ $heightGridContent: 844px;
         content: "YOUR LAYOUT IS HERE...";
         display: flex;
         align-items: center;
-        height: 100%;
+        margin: auto;
         justify-content: center;
         font-size: 14px;
         font-weight: 700;
@@ -151,8 +151,82 @@ $heightGridContent: 844px;
       }
 
       gridster-item {
-        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-          0 4px 6px -4px rgb(0 0 0 / 0.1);
+        border-radius: 8px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        padding: 10px 8px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 14.52px;
+
+        .box-control-grid {
+          display: none;
+          align-items: center;
+          justify-content: flex-end;
+          position: absolute;
+          right: 0;
+          margin-top: 12px;
+          margin-right: 8px;
+          padding: 4px;
+          background: rgba(243, 243, 243, 1);
+          border-radius: 4px;
+
+          span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            margin-right: 8px;
+            cursor: pointer;
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+
+        &:hover {
+          .box-control-grid {
+            display: flex;
+          }
+
+          &.box_border {
+            .box-control-grid {
+              background: #fff;
+            }
+          }
+        }
+
+        &.box_border {
+          background: rgba(242, 242, 242, 1);
+        }
+
+        // &.typography_builder {
+
+        // }
+
+        // &.banner_builder {
+
+        // }
+
+        // &.assets_builder {
+
+        // }
+
+        // &.content_editor_builder {
+
+        // }
+
+        // &.collections_builder {
+
+        // }
+
+        // &.form_builder {
+
+        // }
+
+        // &.breadcrumb_builder {
+
+        // }
       }
     }
 

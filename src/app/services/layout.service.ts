@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Type } from '@angular/core';
 import {
   GridsterConfig as GridConfig,
   GridsterItem as GridItem,
 } from 'angular-gridster2';
-import { GRID_CONFIG_OPTIONS } from '../constant/builder.constant';
+import { COMPONENTS_DATA, GRID_CONFIG_OPTIONS, MENUS } from '../constant/builder.constant';
 import { IComponent, IDataBuilder, IMenuDataBuilder } from '../interfaces/layout.interface';
 import { UUID } from 'angular2-uuid';
 import { BehaviorSubject } from 'rxjs';
@@ -26,6 +26,13 @@ export class LayoutService {
       isShowHeader: true,
       dataBuilder: [],
     };
+
+    (initialDataBuilderLayout.dataBuilder || []).forEach((dataItem: GridItem) => {
+      if(dataItem['data']) {
+        const componentInit = COMPONENTS_DATA[dataItem['data'].code] as Type<any>;
+        dataItem['data'].component = componentInit;
+      }
+    })
     
     this.dataBuilderLayout$ = new BehaviorSubject<IDataBuilder>(initialDataBuilderLayout);
   }
@@ -70,7 +77,7 @@ export class LayoutService {
     };
 
     if(item) {
-      newItem['data'] = item;
+      newItem['data'] = MENUS.find(itemMenu => itemMenu['code'] === item['code']);
     }
     const currentLayout = this.dataBuilderLayout$.getValue();
     currentLayout.dataBuilder.push(newItem);
@@ -133,7 +140,7 @@ export class LayoutService {
   emptyCellDrop(event: DragEvent, item: GridItem): void {
     const itemDataString: string = event.dataTransfer?.getData('data-item') || '';
     const itemData: IMenuDataBuilder = JSON.parse(itemDataString);
-    this.addItem(itemData.component.cols || 1, itemData.component.rows || 1, item.x, item.y, itemData);
+    this.addItem(itemData.layout.cols || 1, itemData.layout.rows || 1, item.x, item.y, itemData);
   }
  
   getComponentRef(id: string): string {

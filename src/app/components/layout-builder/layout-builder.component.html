@@ -3,12 +3,11 @@
     <ng-content select="[field]"></ng-content>
     <h1>Create a Layout</h1>
     <div>
+      <button  style="margin-right: 40px;" (click)="submit()" >Submit</button>{{"|"}}
       <button (click)="toggleHeaderVisibility()" style="margin-right: 12px;">Show Header</button>
       <span style="margin-right: 40px;">Value show Header: {{isShowHeader}}</span>|
       <button (click)="toggleFooterVisibility()"  style="margin-right: 12px;">Show Footer</button>
       <span style="margin-right: 40px;">Value show Footer: {{isShowFooter}}</span>
-      <br /><br />
-      <button (click)="submit()" >Submit</button>
     </div>
   </div>
   <div class="layout24ntt-builder">
@@ -18,14 +17,15 @@
     <div class="layout24ntt-builder-content layout24ntt-preview">
       <div class="layout24ntt-preview-title">Preview</div>
       <ng-container *ngIf="isShowHeader" >
-        <!-- <div class="box-check" [@animation-builder]="isShowHeader"> -->
-        <div class="box-check">
+        <div class="box-check" [@animation-builder]="isShowHeader">
+        <!-- <div class="box-check"> -->
           <span class="box-check-text"> HEADER </span>
         </div>
       </ng-container>
       <builder-layout></builder-layout>
       <ng-container *ngIf="isShowFooter" >
-        <div class="box-check">
+        <div class="box-check" [@animation-builder]="isShowFooter">
+        <!-- <div class="box-check"> -->
           <span class="box-check-text"> FOOTER </span>
         </div>
       </ng-container>

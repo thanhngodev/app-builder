@@ -1,0 +1,13 @@
+<div class="box-control-grid">
+  <span class="{{dragHandleClass || ''}}">
+    <svg [outerHTML]="'drag-drop-ic' | svgIcon : configIcon"></svg>
+  </span>
+  <span>
+    <svg [outerHTML]="'gear-green' | svgIcon : configIcon"></svg>
+  </span>
+  <ng-container *ngIf="id">
+    <span (click)="deleteItem()" >
+      <svg [outerHTML]="'trash-red' | svgIcon : configIcon"></svg>
+    </span>
+  </ng-container>
+</div>

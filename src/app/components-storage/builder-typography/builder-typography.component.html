@@ -1,0 +1,30 @@
+<div class="builder-typography">
+  <div class="builder-typography-label">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3 6.2V5H14V6.2M8 5.00002V19M5 19H11M13 12.2V11H21V12.2M17 11L17 19M15.5 19H18.5"
+        stroke="#383838"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+
+    <span>TYPOGRAPHY</span>
+  </div>
+  <div>
+    <select>
+      <ng-container *ngFor="let heading of optionHeadings">
+        <option [value]="heading.value">
+          {{ heading.label || "" }}
+        </option>
+      </ng-container>
+    </select>
+  </div>
+</div>

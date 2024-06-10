@@ -18,10 +18,14 @@ export class SidebarBuilderComponent implements OnInit {
     style: { width: '24px', height: '24px' },
   };
 
-  constructor() {}
+  constructor(private layoutService: LayoutService) {}
 
   ngOnInit() {
     console.log(this.menus);
+  }
+
+  dropItem(item: string) {
+    this.layoutService.dropItem(item);
   }
 
   dragStartHandler(event: DragEvent, item: IMenuDataBuilder): void {

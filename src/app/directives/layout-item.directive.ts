@@ -7,12 +7,22 @@ import {
   EnvironmentInjector,
   Type
 } from '@angular/core';
-import { Example1Component } from '../components/example1/example1.component';
-import { Example2Component } from '../components/example2/example2.component';
+import { BuilderBreadcrumbComponent } from '../components-storage/builder-breadcrumb/builder-breadcrumb.component';
+import { BuilderFormComponent } from '../components-storage/builder-form/builder-form.component';
+import { BuilderCollectionsComponent } from '../components-storage/builder-collections/builder-collections.component';
+import { BuilderContentEditorComponent } from '../components-storage/builder-content-editor/builder-content-editor.component';
+import { BuilderAssetsComponent } from '../components-storage/builder-assets/builder-assets.component';
+import { BuilderBannerComponent } from '../components-storage/builder-banner/builder-banner.component';
+import { BuilderTypographyComponent } from '../components-storage/builder-typography/builder-typography.component';
 
 const componentsData: { [key: string]: Type<any> } = {
-  example1: Example1Component,
-  example2: Example2Component
+  TYPOGRAPHY_BUILDER: BuilderTypographyComponent,
+  BANNER_BUILDER: BuilderBannerComponent,
+  ASSETS_BUILDER: BuilderAssetsComponent,
+  CONTENT_EDITOR_BUILDER: BuilderContentEditorComponent,
+  COLLECTIONS_BUILDER: BuilderCollectionsComponent,
+  FORM_BUILDER: BuilderFormComponent,
+  BREADCRUMB_BUILDER: BuilderBreadcrumbComponent
 };
 
 @Directive({

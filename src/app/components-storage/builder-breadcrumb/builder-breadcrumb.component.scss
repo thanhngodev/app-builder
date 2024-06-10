@@ -1,0 +1,12 @@
+.builder-breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 8px;
+    height: 100%;
+    user-select: none;
+    
+    span {
+        margin-left: 10px;
+    }
+}

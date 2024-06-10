@@ -7,10 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { Example1Component } from './components/example1/example1.component';
-import { Example2Component } from './components/example2/example2.component';
 import { LayoutItemDirective } from './directives/layout-item.directive';
-import { GridContentComponent } from './components/grid-content/grid-content.component';
 import { LayoutBuilderComponent } from './components/layout-builder/layout-builder.component';
 
 // Optionally, import additional Clarity icons if you plan to use them
@@ -22,21 +19,41 @@ import { SidebarBuilderComponent } from './components/sidebar-builder/sidebar-bu
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SvgIconPipe } from './pipes/svg-icon.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { BuilderTypographyComponent } from './components-storage/builder-typography/builder-typography.component';
+import { BuilderBannerComponent } from './components-storage/builder-banner/builder-banner.component';
+import { BuilderAssetsComponent } from './components-storage/builder-assets/builder-assets.component';
+import { BuilderContentEditorComponent } from './components-storage/builder-content-editor/builder-content-editor.component';
+import { BuilderCollectionsComponent } from './components-storage/builder-collections/builder-collections.component';
+import { BuilderFormComponent } from './components-storage/builder-form/builder-form.component';
+import { BuilderBreadcrumbComponent } from './components-storage/builder-breadcrumb/builder-breadcrumb.component';
+import { BoxControlItemComponent } from './components/box-control-item/box-control-item.component';
 
 // Register Clarity icons
 ClarityIcons.addIcons(userIcon);
 
 @NgModule({
   declarations: [
+    // Component
     AppComponent,
     LayoutComponent,
-    Example1Component,
-    Example2Component,
-    LayoutItemDirective,
-    GridContentComponent,
     LayoutBuilderComponent,
     SidebarBuilderComponent,
-    SvgIconPipe
+    BoxControlItemComponent,
+    
+    // Directive
+    LayoutItemDirective,
+
+    // Pipe
+    SvgIconPipe,
+
+    // Builder Component
+    BuilderTypographyComponent,
+    BuilderBannerComponent,
+    BuilderAssetsComponent,
+    BuilderContentEditorComponent,
+    BuilderCollectionsComponent,
+    BuilderFormComponent,
+    BuilderBreadcrumbComponent
   ],
   imports: [
     BrowserModule,

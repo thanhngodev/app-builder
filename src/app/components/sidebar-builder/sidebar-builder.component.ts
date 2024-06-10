@@ -4,6 +4,7 @@ import { LayoutService } from '../../services/layout.service';
 import {
   GridsterItem as GridItem,
 } from 'angular-gridster2';
+import { IMenuDataBuilder } from '../../interfaces/layout.interface';
 
 @Component({
   selector: 'builder-sidebar-builder',
@@ -17,24 +18,13 @@ export class SidebarBuilderComponent implements OnInit {
     style: { width: '24px', height: '24px' },
   };
 
-  constructor(private layoutService: LayoutService) {}
+  constructor() {}
 
   ngOnInit() {
     console.log(this.menus);
   }
 
-  dragStartHandler($e: DragEvent, code: string) {
-    if ($e.dataTransfer) {
-      $e.dataTransfer.setData('text/plain', 'Drag Me Button');
-      $e.dataTransfer.dropEffect = 'copy';
-      // $e['component'] = code;
-      // const itemData: GridItem = {
-      //   cols: 1,
-      //   rows: 2,
-      //   x: 1,
-      //   y: 2
-      // }
-      // this.layoutService.emptyCellDrop($e, itemData);
-    }
+  dragStartHandler(event: DragEvent, item: IMenuDataBuilder): void {
+    event.dataTransfer?.setData('data-item', JSON.stringify(item) );
   }
 }

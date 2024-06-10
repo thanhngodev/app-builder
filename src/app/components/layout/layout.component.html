@@ -5,15 +5,18 @@
   [class.empty-content]="layout.length == 0"
 >
   <ng-container *ngFor="let item of layout">
-    <gridster-item [item]="item" (dragover)="setDropId(item['id'])">
+    <gridster-item [item]="item" (dragover)="setDropId(item['id'])"  >
       <builder-grid-content>
         <button (click)="deleteItem(item)">Delete</button><br />
         <span>x: {{ item.x + 1 }}</span
-        >{{ ", " }}<span>y: {{ item.y + 1 }}</span
+        >{{ ", " }} <span>y: {{ item.y + 1 }}</span
         ><br />
         <span>c: {{ item.cols }}</span
-        >{{ ", " }}<span>r: {{ item.rows }}</span
+        >{{ ", " }} <span>r: {{ item.rows }}</span
         ><br />
+        <span *ngIf="item['data']">
+          {{ item['data'] | json }}
+        </span>
         <ng-container
           appLayoutItem
           [componentRef]="getComponentRef(item['id'])"
@@ -22,3 +25,4 @@
     </gridster-item>
   </ng-container>
 </gridster>
+<!-- class="{{ item['data'].component.class || '' }}" -->
